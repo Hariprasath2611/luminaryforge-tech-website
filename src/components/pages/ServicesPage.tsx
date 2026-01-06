@@ -87,6 +87,8 @@ export default function ServicesPage() {
 
         {/* Decorative Elements */}
         <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-neon-green/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-neon-green/10 rounded-full blur-3xl" />
         </div>
       </section>
 
@@ -135,7 +137,7 @@ export default function ServicesPage() {
                       </p>
 
                       {capabilities.length > 0 && (
-                        <div className="bg-neon-green/5 border border-neon-green/20 rounded-2xl p-6">
+                        <div className="bg-neon-green/5 border border-neon-green/20 rounded-2xl p-6 backdrop-blur-sm">
                           <h3 className="text-xl font-heading font-bold text-neon-green mb-4">
                             Key Capabilities
                           </h3>
@@ -218,7 +220,7 @@ export default function ServicesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative bg-neon-green/5 border border-neon-green/20 rounded-2xl p-12 md:p-16 text-center overflow-hidden"
+          className="relative bg-neon-green/5 border border-neon-green/20 rounded-2xl p-12 md:p-16 backdrop-blur-sm text-center overflow-hidden"
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
