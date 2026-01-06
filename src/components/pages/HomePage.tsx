@@ -306,7 +306,7 @@ export default function HomePage() {
       </div>
 
       {/* --- ABOUT SECTION: The Core Identity (Sticky Layout) --- */}
-      <section className="relative w-full max-w-[120rem] mx-auto py-32 px-6 md:px-12 lg:px-24 bg-dark-charcoal">
+      <section id="about" className="relative w-full max-w-[120rem] mx-auto py-32 px-6 md:px-12 lg:px-24 bg-dark-charcoal">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           {/* Sticky Sidebar */}
           <div className="lg:col-span-4 relative">
@@ -405,102 +405,6 @@ export default function HomePage() {
                 </motion.div>
               </motion.div>
             </AnimatedElement>
-          </div>
-        </div>
-      </section>
-
-      {/* --- SERVICES SECTION: The Arsenal (Horizontal Scroll) --- */}
-      <section id="services" className="relative w-full max-w-[120rem] mx-auto py-32 bg-dark-charcoal overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-green/5 to-transparent pointer-events-none" />
-        
-        <div className="px-6 md:px-12 lg:px-24 mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
-          <AnimatedElement>
-            <h2 className="text-5xl md:text-6xl font-heading font-bold text-white">
-              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500">ARSENAL</span>
-            </h2>
-            <p className="mt-4 text-gray-400 max-w-md">
-              Comprehensive technology solutions tailored to forge your digital dominance.
-            </p>
-          </AnimatedElement>
-          
-          <AnimatedElement delay="0.2s">
-            <Link to="/services" className="flex items-center gap-2 text-neon-green font-heading font-bold hover:text-white transition-colors">
-              VIEW ALL PROTOCOLS <ArrowRight className="w-5 h-5" />
-            </Link>
-          </AnimatedElement>
-        </div>
-
-        {/* Horizontal Scroll Container */}
-        <div className="w-full overflow-x-auto pb-12 scrollbar-hide px-6 md:px-12 lg:px-24">
-          <div className="flex gap-8 w-max">
-            {allServices.map((service, index) => {
-              const IconComponent = serviceIcons[service.serviceName as keyof typeof serviceIcons] || Code;
-              return (
-                <AnimatedElement key={service._id || index} delay={`${index * 0.1}s`} className="w-[400px] md:w-[450px]">
-                  <Link to={`/services#${service._id}`} className="block h-full group">
-                    <motion.div 
-                      className="h-full glass-panel p-1 rounded-2xl transition-all duration-500 group-hover:border-neon-green/50 group-hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] relative overflow-hidden"
-                      whileHover={{ y: -10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {/* Hover Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      <div className="relative bg-dark-charcoal/80 rounded-xl h-full p-8 flex flex-col">
-                        {/* Image Area */}
-                        <div className="relative h-48 w-full mb-8 rounded-lg overflow-hidden border border-white/5 group-hover:border-neon-green/30 transition-colors">
-                          {service.serviceImage ? (
-                            <motion.div whileHover={{ scale: 1.15 }} transition={{ duration: 0.5 }} className="w-full h-full">
-                              <Image 
-                                src={service.serviceImage} 
-                                alt={service.serviceName || 'Service'} 
-                                width={450} 
-                                className="w-full h-full object-cover"
-                              />
-                            </motion.div>
-                          ) : (
-                            <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                              <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 20, repeat: Infinity }}>
-                                <IconComponent className="w-16 h-16 text-white/20" />
-                              </motion.div>
-                            </div>
-                          )}
-                          <motion.div 
-                            className="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10"
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          >
-                            <IconComponent className="w-6 h-6 text-neon-green" />
-                          </motion.div>
-                        </div>
-
-                        {/* Content */}
-                        <h3 className="text-2xl font-heading font-bold text-white mb-3 group-hover:text-neon-green transition-colors">
-                          {service.serviceName}
-                        </h3>
-                        <p className="text-gray-400 font-paragraph text-sm leading-relaxed mb-8 flex-grow">
-                          {service.shortDescription || "Advanced digital solution for modern enterprises."}
-                        </p>
-
-                        {/* Footer */}
-                        <div className="pt-6 border-t border-white/10 flex justify-between items-center">
-                          <span className="text-xs font-paragraph text-gray-500 uppercase tracking-wider">
-                            // Service ID: {index + 1 < 10 ? `0${index + 1}` : index + 1}
-                          </span>
-                          <motion.span 
-                            className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-neon-green group-hover:border-neon-green group-hover:text-black transition-all"
-                            whileHover={{ rotate: 90 }}
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                          </motion.span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                </AnimatedElement>
-              );
-            })}
           </div>
         </div>
       </section>
