@@ -138,37 +138,8 @@ export default function HomePage() {
           opacity: 1;
           transform: translateY(0);
         }
-        .glass-panel {
-          background: rgba(18, 18, 18, 0.6);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(57, 255, 20, 0.15);
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
         .neon-text-glow {
           text-shadow: 0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3);
-        }
-        .grid-bg {
-          background-size: 50px 50px;
-          background-image: linear-gradient(to right, rgba(57, 255, 20, 0.05) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
-        }
-        .clip-diagonal {
-          clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-        .clip-diagonal-reverse {
-          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-        }
-        .scrolling-text-container {
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        .scrolling-text-inner {
-          display: inline-block;
-          animation: scroll-left 20s linear infinite;
-        }
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
         }
       `}</style>
 
@@ -178,7 +149,6 @@ export default function HomePage() {
       <section className="relative h-screen w-full max-w-[120rem] mx-auto flex flex-col items-center justify-center overflow-hidden">
         {/* Dynamic Background Layer */}
         <div className="absolute inset-0 bg-dark-charcoal z-0">
-          <div className="absolute inset-0 grid-bg opacity-30" />
           {/* Code Rain */}
           {codeLines.map((line) => (
             <motion.div
@@ -211,7 +181,7 @@ export default function HomePage() {
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-neon-green opacity-50" />
             
             <AnimatedElement>
-              <span className="inline-block py-1 px-3 border border-neon-green/30 rounded-full text-neon-green text-xs tracking-[0.2em] uppercase mb-6 bg-neon-green/5 backdrop-blur-sm">
+              <span className="inline-block py-1 px-3 border border-neon-green/30 rounded-full text-neon-green text-xs tracking-[0.2em] uppercase mb-6 bg-neon-green/5">
                 System Online v2.0
               </span>
             </AnimatedElement>
@@ -286,7 +256,7 @@ export default function HomePage() {
                 <p className="font-paragraph text-neon-green/80 text-sm tracking-widest uppercase mb-8">
                   // System Identity
                 </p>
-                <div className="hidden lg:block p-6 border border-neon-green/20 bg-neon-green/5 backdrop-blur-sm rounded-lg">
+                <div className="hidden lg:block p-6 border border-neon-green/20 bg-neon-green/5 rounded-lg">
                   <div className="flex items-center gap-4 mb-4">
                     <Terminal className="w-6 h-6 text-neon-green" />
                     <span className="font-heading font-bold text-white">Status Report</span>
@@ -338,7 +308,7 @@ export default function HomePage() {
               <div className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 group">
                 <div className="absolute inset-0 bg-neon-green/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700" />
                 <Image 
-                  src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=team-collaboration" 
+                  src="https://static.wixstatic.com/media/5283f4_85b89e1e1837427fa45066b85d892665~mv2.png?originWidth=896&originHeight=448" 
                   alt="Luminaryforge Team collaborating on a digital project" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />

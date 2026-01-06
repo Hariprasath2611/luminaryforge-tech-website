@@ -23,7 +23,7 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-dark-charcoal/80 backdrop-blur-md border-b border-neon-green/20"
+      className="fixed top-0 left-0 right-0 z-50 bg-dark-charcoal border-b border-neon-green/20"
     >
       <div className="max-w-[120rem] mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
