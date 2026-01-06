@@ -338,7 +338,7 @@ export default function HomePage() {
               <div className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 group">
                 <div className="absolute inset-0 bg-neon-green/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700" />
                 <Image 
-                  src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=team-collaboration" 
+                  src="https://static.wixstatic.com/media/5283f4_85b89e1e1837427fa45066b85d892665~mv2.png?originWidth=896&originHeight=448" 
                   alt="Luminaryforge Team collaborating on a digital project" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
