@@ -144,9 +144,6 @@ export default function HomePage() {
           border: 1px solid rgba(57, 255, 20, 0.15);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        .neon-text-glow {
-          text-shadow: 0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3);
-        }
         .grid-bg {
           background-size: 50px 50px;
           background-image: linear-gradient(to right, rgba(57, 255, 20, 0.05) 1px, transparent 1px),
@@ -169,6 +166,36 @@ export default function HomePage() {
         @keyframes scroll-left {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        @keyframes pulse-border {
+          0%, 100% { border-color: rgba(57, 255, 20, 0.3); }
+          50% { border-color: rgba(57, 255, 20, 0.6); }
+        }
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        @keyframes rotate-slow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        .animate-pulse-border {
+          animation: pulse-border 2s ease-in-out infinite;
+        }
+        .animate-shimmer {
+          background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.2), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 3s infinite;
+        }
+        .animate-rotate-slow {
+          animation: rotate-slow 20s linear infinite;
         }
       `}</style>
 
@@ -211,7 +238,7 @@ export default function HomePage() {
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-neon-green opacity-50" />
             
             <AnimatedElement>
-              <span className="inline-block py-1 px-3 border border-neon-green/30 rounded-full text-neon-green text-xs tracking-[0.2em] uppercase mb-6 bg-neon-green/5 backdrop-blur-sm">
+              <span className="inline-block py-1 px-3 border border-neon-green/30 rounded-full text-neon-green text-xs tracking-[0.2em] uppercase mb-6 bg-neon-green/5 animate-pulse-border">
                 System Online v2.0
               </span>
             </AnimatedElement>
@@ -219,7 +246,7 @@ export default function HomePage() {
             <AnimatedElement delay="0.1s">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold leading-[0.9] tracking-tighter text-white mb-8 mix-blend-difference">
                 FORGING <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-600 neon-text-glow">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-600">
                   THE FUTURE
                 </span>
               </h1>
@@ -233,21 +260,25 @@ export default function HomePage() {
 
             <AnimatedElement delay="0.3s">
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a 
+                <motion.a 
                   href="#services" 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className="group relative px-8 py-4 bg-neon-green text-dark-charcoal font-heading font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(57,255,20,0.4)]"
                 >
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   <span className="relative flex items-center gap-2">
-                    EXPLORE SERVICES <ArrowRight className="w-5 h-5" />
+                    EXPLORE SERVICES <motion.div whileHover={{ x: 5 }}><ArrowRight className="w-5 h-5" /></motion.div>
                   </span>
-                </a>
-                <a 
+                </motion.a>
+                <motion.a 
                   href="#contact" 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className="group px-8 py-4 border border-neon-green/30 text-neon-green font-heading font-bold text-lg hover:bg-neon-green/10 transition-colors"
                 >
                   INITIATE CONTACT
-                </a>
+                </motion.a>
               </div>
             </AnimatedElement>
           </motion.div>
@@ -259,7 +290,9 @@ export default function HomePage() {
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neon-green/50"
         >
           <span className="text-[10px] tracking-widest uppercase">Scroll to Initialize</span>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
         </motion.div>
       </section>
 
@@ -317,36 +350,60 @@ export default function HomePage() {
 
             <AnimatedElement delay="0.2s">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="p-8 border border-white/10 hover:border-neon-green/50 transition-colors duration-500 bg-white/5 group">
-                  <Cpu className="w-10 h-10 text-neon-green mb-6 group-hover:scale-110 transition-transform" />
+                <motion.div 
+                  whileHover={{ y: -10 }}
+                  className="p-8 border border-white/10 hover:border-neon-green/50 transition-colors duration-500 bg-white/5 group"
+                >
+                  <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                    <Cpu className="w-10 h-10 text-neon-green mb-6 group-hover:scale-110 transition-transform" />
+                  </motion.div>
                   <h3 className="text-xl font-heading font-bold text-white mb-4">Technical Mastery</h3>
                   <p className="text-gray-400 leading-relaxed">
                     Our code is clean, efficient, and scalable. We build systems that endure the rapid evolution of the digital landscape.
                   </p>
-                </div>
-                <div className="p-8 border border-white/10 hover:border-neon-green/50 transition-colors duration-500 bg-white/5 group">
-                  <Zap className="w-10 h-10 text-neon-green mb-6 group-hover:scale-110 transition-transform" />
+                </motion.div>
+                <motion.div 
+                  whileHover={{ y: -10 }}
+                  className="p-8 border border-white/10 hover:border-neon-green/50 transition-colors duration-500 bg-white/5 group"
+                >
+                  <motion.div animate={{ rotate: [0, -5, 5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                    <Zap className="w-10 h-10 text-neon-green mb-6 group-hover:scale-110 transition-transform" />
+                  </motion.div>
                   <h3 className="text-xl font-heading font-bold text-white mb-4">Rapid Deployment</h3>
                   <p className="text-gray-400 leading-relaxed">
                     Speed is a feature. We utilize agile methodologies to deliver high-impact solutions without compromising integrity.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </AnimatedElement>
 
             <AnimatedElement>
-              <div className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 group">
+              <motion.div 
+                className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 group"
+                whileHover={{ borderColor: 'rgba(57, 255, 20, 0.5)' }}
+              >
                 <div className="absolute inset-0 bg-neon-green/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700" />
-                <Image 
-                  src="https://static.wixstatic.com/media/5283f4_85b89e1e1837427fa45066b85d892665~mv2.png?originWidth=896&originHeight=448" 
-                  alt="Luminaryforge Team collaborating on a digital project" 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-dark-charcoal to-transparent z-20">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full"
+                >
+                  <Image 
+                    src="https://static.wixstatic.com/media/5283f4_85b89e1e1837427fa45066b85d892665~mv2.png?originWidth=896&originHeight=448" 
+                    alt="Luminaryforge Team collaborating on a digital project" 
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+                <motion.div 
+                  className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-dark-charcoal to-transparent z-20"
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <p className="font-paragraph text-neon-green text-sm mb-2">// THE HUMAN ELEMENT</p>
                   <p className="text-white font-heading text-2xl">Expert developers, designers, and strategists working in unison.</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </AnimatedElement>
           </div>
         </div>
@@ -382,7 +439,11 @@ export default function HomePage() {
               return (
                 <AnimatedElement key={service._id || index} delay={`${index * 0.1}s`} className="w-[400px] md:w-[450px]">
                   <Link to={`/services#${service._id}`} className="block h-full group">
-                    <div className="h-full glass-panel p-1 rounded-2xl transition-all duration-500 group-hover:border-neon-green/50 group-hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] relative overflow-hidden">
+                    <motion.div 
+                      className="h-full glass-panel p-1 rounded-2xl transition-all duration-500 group-hover:border-neon-green/50 group-hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] relative overflow-hidden"
+                      whileHover={{ y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {/* Hover Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
@@ -390,20 +451,28 @@ export default function HomePage() {
                         {/* Image Area */}
                         <div className="relative h-48 w-full mb-8 rounded-lg overflow-hidden border border-white/5 group-hover:border-neon-green/30 transition-colors">
                           {service.serviceImage ? (
-                            <Image 
-                              src={service.serviceImage} 
-                              alt={service.serviceName || 'Service'} 
-                              width={450} 
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
+                            <motion.div whileHover={{ scale: 1.15 }} transition={{ duration: 0.5 }} className="w-full h-full">
+                              <Image 
+                                src={service.serviceImage} 
+                                alt={service.serviceName || 'Service'} 
+                                width={450} 
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
                           ) : (
                             <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                              <IconComponent className="w-16 h-16 text-white/20" />
+                              <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 20, repeat: Infinity }}>
+                                <IconComponent className="w-16 h-16 text-white/20" />
+                              </motion.div>
                             </div>
                           )}
-                          <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                          <motion.div 
+                            className="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10"
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
                             <IconComponent className="w-6 h-6 text-neon-green" />
-                          </div>
+                          </motion.div>
                         </div>
 
                         {/* Content */}
@@ -419,12 +488,15 @@ export default function HomePage() {
                           <span className="text-xs font-paragraph text-gray-500 uppercase tracking-wider">
                             // Service ID: {index + 1 < 10 ? `0${index + 1}` : index + 1}
                           </span>
-                          <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-neon-green group-hover:border-neon-green group-hover:text-black transition-all">
+                          <motion.span 
+                            className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-neon-green group-hover:border-neon-green group-hover:text-black transition-all"
+                            whileHover={{ rotate: 90 }}
+                          >
                             <ArrowRight className="w-4 h-4" />
-                          </span>
+                          </motion.span>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </Link>
                 </AnimatedElement>
               );
@@ -457,16 +529,27 @@ export default function HomePage() {
             { icon: Globe, title: "Deployment", desc: "We launch your solution and ensure optimal performance." }
           ].map((step, idx) => (
             <AnimatedElement key={idx} delay={`${idx * 0.2}s`} className="relative">
-              <div className="bg-dark-charcoal border border-white/10 p-8 rounded-2xl hover:border-neon-green/40 transition-colors group h-full">
-                <div className="w-16 h-16 bg-dark-charcoal border border-neon-green/30 rounded-xl flex items-center justify-center mb-6 relative z-10 group-hover:bg-neon-green/10 transition-colors shadow-[0_0_20px_rgba(57,255,20,0.1)]">
+              <motion.div 
+                className="bg-dark-charcoal border border-white/10 p-8 rounded-2xl hover:border-neon-green/40 transition-colors group h-full"
+                whileHover={{ y: -10, borderColor: 'rgba(57, 255, 20, 0.4)' }}
+              >
+                <motion.div 
+                  className="w-16 h-16 bg-dark-charcoal border border-neon-green/30 rounded-xl flex items-center justify-center mb-6 relative z-10 group-hover:bg-neon-green/10 transition-colors shadow-[0_0_20px_rgba(57,255,20,0.1)]"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
+                >
                   <step.icon className="w-8 h-8 text-neon-green" />
-                  <div className="absolute -top-3 -right-3 w-6 h-6 bg-neon-green text-black font-bold text-xs flex items-center justify-center rounded-full">
+                  <motion.div 
+                    className="absolute -top-3 -right-3 w-6 h-6 bg-neon-green text-black font-bold text-xs flex items-center justify-center rounded-full"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
                     {idx + 1}
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
                 <h3 className="text-xl font-heading font-bold text-white mb-3">{step.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
-              </div>
+              </motion.div>
             </AnimatedElement>
           ))}
         </div>
@@ -482,7 +565,13 @@ export default function HomePage() {
             { label: "Years Active", value: "5+" }
           ].map((stat, idx) => (
             <AnimatedElement key={idx} delay={`${idx * 0.1}s`} className="text-center">
-              <div className="text-4xl md:text-6xl font-heading font-bold text-white mb-2">{stat.value}</div>
+              <motion.div 
+                className="text-4xl md:text-6xl font-heading font-bold text-white mb-2"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
+              >
+                {stat.value}
+              </motion.div>
               <div className="text-neon-green font-paragraph text-sm uppercase tracking-widest">{stat.label}</div>
             </AnimatedElement>
           ))}
@@ -504,29 +593,43 @@ export default function HomePage() {
             </p>
             
             <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 border border-neon-green/30 rounded-full flex items-center justify-center group-hover:bg-neon-green group-hover:text-black transition-all text-neon-green">
+              <motion.div 
+                className="flex items-center gap-6 group"
+                whileHover={{ x: 10 }}
+              >
+                <motion.div 
+                  className="w-14 h-14 border border-neon-green/30 rounded-full flex items-center justify-center group-hover:bg-neon-green group-hover:text-black transition-all text-neon-green"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
                   <Mail className="w-6 h-6" />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Email Frequency</p>
                   <a href="mailto:contact@luminaryforge.tech" className="text-2xl font-heading font-bold text-white hover:text-neon-green transition-colors">
                     contact@luminaryforge.tech
                   </a>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 border border-neon-green/30 rounded-full flex items-center justify-center group-hover:bg-neon-green group-hover:text-black transition-all text-neon-green">
+              <motion.div 
+                className="flex items-center gap-6 group"
+                whileHover={{ x: 10 }}
+              >
+                <motion.div 
+                  className="w-14 h-14 border border-neon-green/30 rounded-full flex items-center justify-center group-hover:bg-neon-green group-hover:text-black transition-all text-neon-green"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
                   <Shield className="w-6 h-6" />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Security Protocol</p>
                   <p className="text-xl font-heading font-bold text-white">
                     Encrypted Communication
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </AnimatedElement>
 
