@@ -198,7 +198,9 @@ export default function HomePage() {
           animation: rotate-slow 20s linear infinite;
         }
       `}</style>
+
       <Header />
+
       {/* --- HERO SECTION: The Digital Foundry --- */}
       <section className="relative h-screen w-full max-w-[120rem] mx-auto flex flex-col items-center justify-center overflow-hidden">
         {/* Dynamic Background Layer */}
@@ -294,7 +296,16 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
       </section>
+
       {/* --- MARQUEE SECTION: The Pulse --- */}
+      <div className="w-full bg-neon-green text-dark-charcoal py-4 overflow-hidden border-y border-dark-charcoal relative z-20">
+        <div className="scrolling-text-container">
+          <div className="scrolling-text-inner font-heading font-bold text-4xl md:text-6xl uppercase tracking-tighter">
+            Innovation // Design // Development // Strategy // 3D Modeling // Game Logic // User Experience // Innovation // Design // Development // Strategy // 3D Modeling // Game Logic // User Experience //
+          </div>
+        </div>
+      </div>
+
       {/* --- ABOUT SECTION: The Core Identity (Sticky Layout) --- */}
       <section id="about" className="relative w-full max-w-[120rem] mx-auto py-32 px-6 md:px-12 lg:px-24 bg-dark-charcoal">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -413,13 +424,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <div className="w-full bg-neon-green text-dark-charcoal py-4 overflow-hidden border-y border-dark-charcoal relative z-20">
-        <div className="scrolling-text-container">
-          <div className="scrolling-text-inner font-heading font-bold text-4xl md:text-6xl uppercase tracking-tighter">
-            Innovation // Design // Development // Strategy // 3D Modeling // Game Logic // User Experience // Innovation // Design // Development // Strategy // 3D Modeling // Game Logic // User Experience //
-          </div>
-        </div>
-      </div>
+
       {/* --- PROCESS SECTION: The Blueprint (New Content) --- */}
       <section className="relative w-full max-w-[120rem] mx-auto py-32 px-6 md:px-12 lg:px-24 bg-dark-charcoal border-t border-white/5">
         <div className="text-center mb-24">
@@ -469,6 +474,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
       {/* --- STATS SECTION: Proof of Power --- */}
       <section className="w-full max-w-[120rem] mx-auto py-24 bg-neon-green/5 border-y border-neon-green/10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 md:px-12 lg:px-24">
@@ -491,6 +497,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
       {/* --- CONTACT SECTION: Signal Uplink --- */}
       <section id="contact" className="relative w-full max-w-[120rem] mx-auto py-32 px-6 md:px-12 lg:px-24 bg-dark-charcoal overflow-hidden">
         {/* Decorative Background */}
@@ -599,6 +606,7 @@ export default function HomePage() {
           </AnimatedElement>
         </div>
       </section>
+
       <Footer />
     </div>
   );
