@@ -260,17 +260,18 @@ export default function HomePage() {
 
             <AnimatedElement delay="0.3s">
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <motion.a 
-                  href="#services" 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 bg-neon-green text-dark-charcoal font-heading font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(57,255,20,0.4)]"
-                >
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  <span className="relative flex items-center gap-2">
-                    EXPLORE SERVICES <motion.div whileHover={{ x: 5 }}><ArrowRight className="w-5 h-5" /></motion.div>
-                  </span>
-                </motion.a>
+                <Link to="/why-choose-us">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative px-8 py-4 bg-neon-green text-dark-charcoal font-heading font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(57,255,20,0.4)]"
+                  >
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    <span className="relative flex items-center gap-2">
+                      EXPLORE US <motion.div whileHover={{ x: 5 }}><ArrowRight className="w-5 h-5" /></motion.div>
+                    </span>
+                  </motion.button>
+                </Link>
                 <motion.a 
                   href="#contact" 
                   whileHover={{ scale: 1.05 }}
@@ -404,6 +405,21 @@ export default function HomePage() {
                   <p className="text-white font-heading text-2xl">Expert developers, designers, and strategists working in unison.</p>
                 </motion.div>
               </motion.div>
+            </AnimatedElement>
+
+            <AnimatedElement>
+              <Link to="/services">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative px-8 py-4 bg-neon-green text-dark-charcoal font-heading font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(57,255,20,0.4)]"
+                >
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <span className="relative flex items-center gap-2">
+                    START WORK WITH US <motion.div whileHover={{ x: 5 }}><ArrowRight className="w-5 h-5" /></motion.div>
+                  </span>
+                </motion.button>
+              </Link>
             </AnimatedElement>
           </div>
         </div>
